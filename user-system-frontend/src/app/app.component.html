@@ -1,0 +1,17 @@
+
+<div style="max-width: 600px; margin: auto;">
+  <h1>Sistema de Usuários</h1>
+  <form (submit)="salvar(); $event.preventDefault();">
+    <input [(ngModel)]="nome" name="nome" placeholder="Nome" required />
+    <input [(ngModel)]="email" name="email" placeholder="Email" required />
+    <button type="submit">{{ editando ? 'Atualizar' : 'Adicionar' }}</button>
+    <button type="button" *ngIf="editando" (click)="cancelar()">Cancelar</button>
+  </form>
+  <ul>
+    <li *ngFor="let u of usuarios">
+      {{ u.nome }} ({{ u.email }})
+      <button (click)="editar(u)">Editar</button>
+      <button (click)="deletar(u.id)">Excluir</button>
+    </li>
+  </ul>
+</div>
